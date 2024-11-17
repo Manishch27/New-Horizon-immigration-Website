@@ -1,0 +1,16 @@
+/* .carousel-image {
+    transition: transform 1s ease-in-out;
+}
+
+#carouselImages {
+    display: flex;
+    transition: transform 1s ease-in-out; /* Smooth sliding effect */
+    /* width: 300%; Adjust the width to accommodate all 3 images */
+/* } */ 
+
+
+/* transition */
+
+.carousel-image {
+    transition: opacity 2s ease-in-out;
+}
