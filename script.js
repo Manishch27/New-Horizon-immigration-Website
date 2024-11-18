@@ -39,3 +39,50 @@
 
     // Change image every 3 seconds
     setInterval(showNextImage, 5000);
+
+    // Toggle mobile menu
+
+    document.getElementById('menu-toggle').addEventListener('click', function() {
+        const menu = document.getElementById('mobile-menu-2');
+        menu.classList.toggle('hidden');
+    });
+
+
+    //  Counter in stats
+
+    document.addEventListener("DOMContentLoaded", () => {
+        const counters = document.querySelectorAll("dt[data-target]");
+
+        counters.forEach(counter => {
+            const target = +counter.getAttribute("data-target");
+            const speed = target > 1000 ? 20 : 30;
+
+            const updateCounter = () => {
+                let value = +counter.innerText.replace('+', '').replace(/,/g, ''); // Remove symbols
+                const increment = Math.ceil(target / speed);
+
+                if (value < target) {
+                    value += increment;
+                    
+                    if (value >= 1000000) {
+                        counter.innerText = "1M+";
+                    } else if (value >= 100000) {
+                        counter.innerText = `${Math.floor(value / 1000)}K+`;
+                    } else if (value >= 10000) {
+                        counter.innerText = `${Math.floor(value / 1000)}K+`;
+                    } else if (value >= 1000) {
+                        counter.innerText = `${Math.floor(value / 1000)}K+`;
+                    } else {
+                        counter.innerText = `${value.toLocaleString()}+`;
+                    }
+                    
+                    setTimeout(updateCounter, 30);
+                } else {
+                    // Final display
+                    counter.innerText = target >= 1000000 ? "1M+" : `${target.toLocaleString()}+`;
+                }
+            };
+
+            updateCounter();
+        });
+    });
