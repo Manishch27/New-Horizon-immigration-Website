@@ -1,25 +1,4 @@
-        // let currentImageIndex = 0;
-        // const images = document.querySelectorAll('.carousel-image');
-        // const totalImages = images.length;
-        // const carouselContainer = document.getElementById('carouselImages');
-    
-        // function showNextImage() {
-        //     // Update the index to move images
-        //     currentImageIndex = (currentImageIndex + 1) % totalImages;
-    
-        //     // Move the images by changing the transform property
-        //     const offset = -100 * currentImageIndex; // Move to the left by 100% per image
-        //     carouselContainer.style.transform = `translateX(${offset}%)`;
-        // }
-    
-        // // Change image every 5 seconds
-        // setInterval(showNextImage, 5000);
-
-
-
-
-
-        // JavaScript to rotate images with fade transition
+     // JavaScript to rotate images with fade transition
     let currentImageIndex = 0;
     const images = document.querySelectorAll('.carousel-image');
     const totalImages = images.length;
@@ -55,7 +34,7 @@
 
         counters.forEach(counter => {
             const target = +counter.getAttribute("data-target");
-            const speed = target > 1000 ? 20 : 30;
+            const speed = target > 1000 ? 60 : 50;
 
             const updateCounter = () => {
                 let value = +counter.innerText.replace('+', '').replace(/,/g, ''); // Remove symbols
@@ -64,10 +43,8 @@
                 if (value < target) {
                     value += increment;
                     
-                    if (value >= 1000000) {
-                        counter.innerText = "1M+";
-                    } else if (value >= 100000) {
-                        counter.innerText = `${Math.floor(value / 1000)}K+`;
+                    if (value >= 100000) {
+                        counter.innerText = "100k+";
                     } else if (value >= 10000) {
                         counter.innerText = `${Math.floor(value / 1000)}K+`;
                     } else if (value >= 1000) {
@@ -79,7 +56,7 @@
                     setTimeout(updateCounter, 30);
                 } else {
                     // Final display
-                    counter.innerText = target >= 1000000 ? "1M+" : `${target.toLocaleString()}+`;
+                    counter.innerText = target >= 100000 ? "100k+" : `${target.toLocaleString()}+`;
                 }
             };
 
