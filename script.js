@@ -34,7 +34,7 @@
 
         counters.forEach(counter => {
             const target = +counter.getAttribute("data-target");
-            const speed = target > 1000 ? 60 : 50;
+            const speed = target > 1000 ? 20 : 30;
 
             const updateCounter = () => {
                 let value = +counter.innerText.replace('+', '').replace(/,/g, ''); // Remove symbols
