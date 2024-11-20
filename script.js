@@ -55,7 +55,7 @@
 
         counters.forEach(counter => {
             const target = +counter.getAttribute("data-target");
-            const speed = target > 1000 ? 20 : 30;
+            const speed = target > 1000 ? 60 : 50;
 
             const updateCounter = () => {
                 let value = +counter.innerText.replace('+', '').replace(/,/g, ''); // Remove symbols
@@ -64,10 +64,9 @@
                 if (value < target) {
                     value += increment;
                     
-                    if (value >= 1000000) {
-                        counter.innerText = "1M+";
-                    } else if (value >= 100000) {
-                        counter.innerText = `${Math.floor(value / 1000)}K+`;
+                    if (value >= 100000) {
+                        counter.innerText = "100k+";
+                    }
                     } else if (value >= 10000) {
                         counter.innerText = `${Math.floor(value / 1000)}K+`;
                     } else if (value >= 1000) {
@@ -79,7 +78,7 @@
                     setTimeout(updateCounter, 30);
                 } else {
                     // Final display
-                    counter.innerText = target >= 1000000 ? "1M+" : `${target.toLocaleString()}+`;
+                    counter.innerText = target >= 100000 ? "100k+" : `${target.toLocaleString()}+`;
                 }
             };
 
